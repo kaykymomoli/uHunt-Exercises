@@ -13,22 +13,23 @@ void dfs(int u){
 }
 
 int main(){
-    freopen("a.txt","w",stdout);
-    freopen("input.txt","r",stdin);
     int n; cin >> n;
     string x, str;
+    cin.ignore();
     getline(cin,str);
     for(int l= 0; l < n; l++){
         char h; cin >> h;
         int tam= (int)h-64;
         adj.resize(tam);
         memset(vis,false,sizeof(vis));
-        cin >> str;
+        str= "12";
         cin.ignore();
         while(str.size() > 1){
-            adj[(int)(str[0]-'A')].push_back((int)(str[1]-'A'));
-            adj[(int)(str[1]-'A')].push_back((int)(str[0]-'A'));
-            getline(cin,str);
+			getline(cin,str);
+			if(str.size() > 1){
+				adj[(int)(str[0]-'A')].push_back((int)(str[1]-'A'));
+				adj[(int)(str[1]-'A')].push_back((int)(str[0]-'A'));
+			}
         }
         int cont= 0;
         for(int i= 0; i < adj.size(); i++){
